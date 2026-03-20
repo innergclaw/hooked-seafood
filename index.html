@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hooked Seafood 🔥 | Fresh. Sauced. Made to Order.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-red: #B10F1A;
+      --dark-red: #7A0B12;
+      --charcoal: #2B2B2B;
+      --light-gray: #E6E6E6;
+      --accent-blue: #3FA9D5;
+      --light-blue: #7ED3F7;
+      --success-green: #2ECC71;
+      --warning-red: #B10F1A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* UTILITY */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary-red);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-red);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(177, 15, 26, 0.3);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+
+    .btn-outline-light:hover {
+      background: #fff;
+      color: var(--charcoal);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--charcoal);
+      border: 2px solid var(--charcoal);
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--charcoal);
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* HERO SECTION */
+    #hero {
+      min-height: 100vh;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(177,15,26,0.05)"/></svg>') repeat;
+      background-size: 50px 50px;
+      opacity: 0.5;
+    }
+
+    /* Ocean wave accents */
+    .wave-accent {
+      position: absolute;
+      width: 200px;
+      height: 100%;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .wave-left {
+      left: 0;
+      top: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 400" preserveAspectRatio="none"><path d="M100,0 Q50,100 100,200 Q50,300 100,400" fill="none" stroke="%233FA9D5" stroke-width="2"/><path d="M80,0 Q30,100 80,200 Q30,300 80,400" fill="none" stroke="%233FA9D5" stroke-width="1.5"/><path d="M60,0 Q10,100 60,200 Q10,300 60,400" fill="none" stroke="%233FA9D5" stroke-width="1"/></svg>') repeat-y;
+      background-size: 100% 400px;
+    }
+
+    .wave-right {
+      right: 0;
+      top: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 400" preserveAspectRatio="none"><path d="M0,0 Q50,100 0,200 Q50,300 0,400" fill="none" stroke="%233FA9D5" stroke-width="2"/><path d="M20,0 Q70,100 20,200 Q70,300 20,400" fill="none" stroke="%233FA9D5" stroke-width="1.5"/><path d="M40,0 Q90,100 40,200 Q90,300 40,400" fill="none" stroke="%233FA9D5" stroke-width="1"/></svg>') repeat-y;
+      background-size: 100% 400px;
+    }
+
+    /* Wave divider between sections */
+    .wave-divider {
+      width: 100%;
+      height: 40px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z' fill='%23B10F1A' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+
+    .wave-divider.flip {
+      transform: rotate(180deg);
+    }
+
+    .wave-divider.gray {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z' fill='%23E6E6E6' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+
+    .wave-divider.charcoal {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z' fill='%232B2B2B' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-logo {
+      width: 280px;
+      max-width: 80vw;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 10px 40px rgba(0,0,0,0.5));
+    }
+
+    .hero-subtext {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-red);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-supporting {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* DAILY SPECIALS */
+    #daily_specials {
+      padding: 50px 20px;
+      background: #fff;
+    }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .special-card {
+      background: var(--light-gray);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .special-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-red);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .special-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .special-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--charcoal);
+    }
+
+    .special-card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .instagram-cta {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .instagram-cta:hover {
+      transform: scale(1.02);
+    }
+
+    .instagram-cta i {
+      font-size: 32px;
+    }
+
+    /* HAPPY HOUR */
+    #happy_hour {
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    #happy_hour .section-header h2 {
+      color: #fff;
+    }
+
+    #happy_hour .section-header p {
+      color: #aaa;
+    }
+
+    .happy-hour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .happy-hour-item {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .happy-hour-item:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-5px);
+    }
+
+    .happy-hour-item i {
+      font-size: 40px;
+      color: var(--accent-blue);
+      margin-bottom: 16px;
+    }
+
+    .happy-hour-item h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .happy-hour-item p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .happy-hour-tagline {
+      margin-top: 40px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+
+    /* LOCATION */
+    #location {
+      padding: 50px 20px;
+      background: var(--light-gray);
+    }
+
+    .location-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .location-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .location-icon i {
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .location-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .location-address {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .location-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--charcoal);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .location-phone:hover {
+      background: var(--primary-red);
+      transform: scale(1.05);
+    }
+
+    .location-subtext {
+      margin-top: 24px;
+      color: #888;
+      font-size: 16px;
+    }
+
+    /* DELIVERY & PICKUP */
+    #delivery_pickup {
+      padding: 50px 20px;
+      background: #fff;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .option-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--light-gray);
+      padding: 24px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .option-card:hover {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .option-card i {
+      font-size: 28px;
+      color: var(--primary-red);
+    }
+
+    .option-card:hover i {
+      color: var(--accent-blue);
+    }
+
+    .option-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .payment-notice {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+      border-left: 4px solid #ffc107;
+      padding: 20px 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .payment-notice i {
+      font-size: 24px;
+      color: #856404;
+    }
+
+    .payment-notice p {
+      color: #856404;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    /* HOW TO ORDER */
+    #how_to_order {
+      padding: 50px 20px;
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    #how_to_order .section-header h2 {
+      color: #fff;
+    }
+
+    #how_to_order .section-header p {
+      color: #aaa;
+    }
+
+    .order-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .order-step {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .order-step:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--primary-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 auto 20px;
+    }
+
+    .order-step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .order-step p {
+      color: #aaa;
+      font-size: 16px;
+    }
+
+    .order-step .btn {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .order-notice {
+      background: rgba(177, 15, 26, 0.2);
+      border: 1px solid var(--primary-red);
+      padding: 20px 24px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .order-notice p {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* STAY CONNECTED */
+    #stay_connected {
+      padding: 50px 20px;
+      background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    #stay_connected .section-header h2 {
+      color: #fff;
+    }
+
+    #stay_connected .section-header p {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      color: var(--charcoal);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .social-btn i {
+      font-size: 24px;
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .vip-text {
+      background: rgba(0,0,0,0.2);
+      padding: 20px 30px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .vip-text p {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* SOCIAL PROOF */
+    #social_proof {
+      padding: 50px 20px;
+      background: #fff;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--light-gray);
+      padding: 30px;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '"';
+      font-size: 60px;
+      color: var(--primary-red);
+      opacity: 0.3;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-weight: 800;
+    }
+
+    .review-card p {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--charcoal);
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-card .stars {
+      margin-top: 16px;
+      color: #ffc107;
+    }
+
+    /* DOS AND DONTS */
+    #dos_donts {
+      padding: 50px 20px;
+      background: #111;
+      color: #fff;
+    }
+
+    #dos_donts .section-header h2 {
+      color: #fff;
+    }
+
+    #dos_donts .section-header p {
+      color: #888;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .policy-card {
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .policy-card.dos {
+      background: rgba(63, 169, 213, 0.1);
+      border: 2px solid var(--accent-blue);
+    }
+
+    .policy-card.donts {
+      background: rgba(177, 15, 26, 0.1);
+      border: 2px solid var(--warning-red);
+    }
+
+    .policy-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-card.dos h3 {
+      color: var(--accent-blue);
+    }
+
+    .policy-card.donts h3 {
+      color: var(--warning-red);
+    }
+
+    .policy-list {
+      list-style: none;
+    }
+
+    .policy-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .policy-list li:last-child {
+      border-bottom: none;
+    }
+
+    .policy-list i {
+      margin-top: 3px;
+    }
+
+    .policy-card.dos .policy-list i {
+      color: var(--accent-blue);
+    }
+
+    .policy-card.donts .policy-list i {
+      color: var(--warning-red);
+    }
+
+    .policy-footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      color: #888;
+    }
+
+    /* FOOTER CTA */
+    #footer_cta {
+      padding: 40px 20px;
+      background: var(--primary-red);
+      text-align: center;
+      color: #fff;
+    }
+
+    #footer_cta h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .footer-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--primary-red);
+    }
+
+    .btn-white:hover {
+      background: var(--light-gray);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fff;
+      color: var(--charcoal);
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .footer-info {
+      margin-bottom: 20px;
+    }
+
+    .footer-info p {
+      color: #555;
+      margin: 4px 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--charcoal);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-red);
+    }
+
+    .footer-copy {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* BACK TO TOP - CRAB BUTTON */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: var(--primary-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 6px 20px rgba(177, 15, 26, 0.4);
+      border: 3px solid #fff;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(177, 15, 26, 0.5);
+    }
+
+    .crab-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .back-to-top {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .crab-icon {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-subtext {
+        font-size: 22px;
+      }
+
+      .hero-supporting {
+        font-size: 16px;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-header h2 {
+        font-size: 26px;
+      }
+
+      .section-header p {
+        font-size: 16px;
+      }
+
+      .location-card {
+        padding: 30px 20px;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .happy-hour-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .happy-hour-item {
+        padding: 20px;
+      }
+
+      .happy-hour-item i {
+        font-size: 28px;
+      }
+
+      .order-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .specials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .special-card {
+        padding: 20px;
+      }
+
+      .special-icon {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .happy-hour-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .specials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="wave-accent wave-left"></div>
+    <div class="wave-accent wave-right"></div>
+    <div class="hero-content">
+      <img src="hooked-logo-edited.png" alt="Hooked Seafood" class="hero-logo">
+      <p class="hero-subtext">Fresh. Sauced.<br>Made to Order.</p>
+      <p class="hero-supporting">From loaded seafood boils to wings & street favorites ~ we don't play about flavor.</p>
+      <div class="hero-buttons">
+        <a href="https://cashdrop.com/hooked-seafood" target="_blank" class="btn btn-primary">
+          <i class="fas fa-utensils"></i> Order Now
+        </a>
+        <a href="tel:445-260-6796" class="btn btn-outline-dark">
+          <i class="fas fa-phone"></i> Call to Order
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY SPECIALS -->
+  <section id="daily_specials">
+    <div class="container">
+      <div class="section-header">
+        <h2>Daily Deals You Don't Want to Miss</h2>
+        <p>Every day we're cooking up something different. Whether it's crab trays, wing specials, or seafood bags ~ there's always a deal waiting for you.</p>
+      </div>
+      <div class="specials-grid">
+        <div class="special-card">
+          <img src="bluecrabspecial.jpeg" alt="Blue Crab Specials" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 16px;">
+          <h3>Blue Crab Specials</h3>
+          <p>Market price ~ call for availability</p>
+        </div>
+        <div class="special-card">
+          <img src="wings.jpg" alt="Wings & Fries Deals" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 16px;">
+          <h3>Wings & Fries Deals</h3>
+          <p>Crispy wings with our signature sauce</p>
+        </div>
+        <div class="special-card">
+          <img src="combos.jpeg" alt="Seafood Combos & Bags" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 16px;">
+          <h3>Seafood Combos & Bags</h3>
+          <p>Loaded with flavor, made to share</p>
+        </div>
+        <div class="special-card">
+          <img src="seafoodboil.jpg" alt="Weekend Loaded Specials" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 16px;">
+          <h3>Weekend Loaded Specials</h3>
+          <p>The ultimate feast for the fam</p>
+        </div>
+      </div>
+      <a href="https://instagram.com/hookedseafood" target="_blank" class="instagram-cta">
+        <i class="fab fa-instagram"></i>
+        <span>Follow us on Instagram for daily drops & real-time specials</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider gray flip"></div>
+
+  <!-- HAPPY HOUR -->
+  <section id="happy_hour">
+    <div class="container">
+      <div class="section-header">
+        <h2>Happy Hour Vibes</h2>
+        <p>Pull up and catch the vibe.</p>
+        <img src="happy-hour.png" alt="Happy Hour at Hooked Seafood" style="max-width: 100%; border-radius: 16px; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      </div>
+      <div class="happy-hour-grid">
+        <div class="happy-hour-item">
+          <i class="fas fa-clock"></i>
+          <h3>5PM – 8PM</h3>
+          <p>Every Day</p>
+        </div>
+        <div class="happy-hour-item">
+          <i class="fas fa-fire"></i>
+          <h3>Special Menu Pricing</h3>
+          <p>Deals you can't miss</p>
+        </div>
+        <div class="happy-hour-item">
+          <i class="fas fa-wind"></i>
+          <h3>Free Hookah Available</h3>
+          <p>While supplies last</p>
+        </div>
+        <div class="happy-hour-item">
+          <i class="fas fa-music"></i>
+          <h3>Music + Good Energy</h3>
+          <p>The city links up here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider"></div>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <h2>Visit Us</h2>
+      </div>
+      <div class="location-card">
+        <div class="location-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3>Hooked Seafood</h3>
+        <p class="location-address">2408 Germantown Ave<br>Philadelphia, PA</p>
+        <a href="tel:445-260-6796" class="location-phone">
+          <i class="fas fa-phone"></i>
+          445-260-6796
+        </a>
+        <p class="location-subtext">Easy pickup. Fast service. Always fresh.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider gray"></div>
+
+  <!-- DELIVERY & PICKUP -->
+  <section id="delivery_pickup">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get It Your Way</h2>
+        <p>We got options<br>~ however you want it.</p>
+      </div>
+      <div class="options-grid">
+        <div class="option-card">
+          <i class="fas fa-store"></i>
+          <h4>Pickup Available</h4>
+        </div>
+        <div class="option-card">
+          <i class="fas fa-motorcycle"></i>
+          <h4>Local Delivery</h4>
+        </div>
+        <div class="option-card">
+          <i class="fas fa-phone-alt"></i>
+          <h4>Call Ahead Orders</h4>
+        </div>
+        <div class="option-card">
+          <i class="fas fa-users"></i>
+          <h4>Large Orders Welcome</h4>
+        </div>
+      </div>
+      <div class="payment-notice">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>All orders must be paid before preparation for delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider flip"></div>
+
+  <!-- HOW TO ORDER -->
+  <section id="how_to_order">
+    <div class="container">
+      <div class="section-header">
+        <h2>How to Order</h2>
+        <p>Three ways to get your fix.</p>
+      </div>
+      <div class="order-steps">
+        <div class="order-step">
+          <div class="step-number">1</div>
+          <h3>Call Us Direct</h3>
+          <p>Fastest way to order. Talk to a real person.</p>
+          <a href="tel:445-260-6796" class="btn btn-primary">
+            <i class="fas fa-phone"></i> 445-260-6796
+          </a>
+        </div>
+        <div class="order-step">
+          <div class="step-number">2</div>
+          <h3>Order Online</h3>
+          <p>Order through CashDrop for pickup or delivery.</p>
+          <a href="https://cashdrop.com/hooked-seafood" target="_blank" class="btn btn-primary">
+            <i class="fas fa-globe"></i> Order on CashDrop
+          </a>
+        </div>
+        <div class="order-step">
+          <div class="step-number">3</div>
+          <h3>DM to Place Order</h3>
+          <p>Slide in our DMs on Instagram to place your order.</p>
+          <a href="https://instagram.com/hookedseafood" target="_blank" class="btn btn-outline">
+            <i class="fab fa-instagram"></i> @HookedSeafood
+          </a>
+        </div>
+      </div>
+      <div class="order-notice">
+        <p><i class="fas fa-info-circle"></i> To avoid delays, all orders must be confirmed with payment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider"></div>
+
+  <!-- STAY CONNECTED -->
+  <section id="stay_connected">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stay Hooked</h2>
+        <p>Don't miss specials, new drops, and giveaways.</p>
+      </div>
+      <div class="social-actions">
+        <a href="https://instagram.com/hookedseafood" target="_blank" class="social-btn">
+          <i class="fab fa-instagram"></i> Follow on Instagram
+        </a>
+        <a href="https://stan.store/Hookedseafood" target="_blank" class="social-btn" style="background: var(--charcoal); color: #fff;">
+          <i class="fas fa-shopping-bag"></i> SHOP
+        </a>
+      </div>
+      <div class="vip-text" style="margin-top: 20px;">
+        <p>Shop our merch, shirts, and our special sauce to stay connected</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider gray flip"></div>
+
+  <!-- SOCIAL PROOF -->
+  <section id="social_proof">
+    <div class="container">
+      <div class="section-header">
+        <h2>What People Are Saying</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p>Best seafood in the city 🔥</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>Sauce is CRAZY good</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>Wings & seafood combo undefeated</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider charcoal flip"></div>
+
+  <!-- DOS AND DONTS -->
+  <section id="dos_donts">
+    <div class="container">
+      <div class="section-header">
+        <h2>⚠️ Before You Leave</h2>
+        <p>We want you to enjoy every bite ~ follow these quick guidelines to avoid any issues.</p>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-card dos">
+          <h3><i class="fas fa-check-circle"></i> DOs</h3>
+          <ul class="policy-list">
+            <li><i class="fas fa-check"></i> Check and taste your order before leaving</li>
+            <li><i class="fas fa-check"></i> Make sure your full order is correct before leaving</li>
+            <li><i class="fas fa-check"></i> Let us know immediately if something is wrong</li>
+          </ul>
+          <p style="margin-top: 20px; color: var(--accent-blue); font-weight: 600; font-size: 14px;">
+            Once you leave, we cannot replace or adjust orders
+          </p>
+        </div>
+        <div class="policy-card donts">
+          <h3><i class="fas fa-times-circle"></i> DON'Ts</h3>
+          <ul class="policy-list">
+            <li><i class="fas fa-times"></i> Don't keep seafood wrapped up hot for more than 10 minutes (it will overcook)</li>
+            <li><i class="fas fa-times"></i> Do not expect replacements or refunds after leaving</li>
+            <li><i class="fas fa-times"></i> Crab sizes vary (some heavier than others)</li>
+            <li><i class="fas fa-times"></i> No refunds</li>
+          </ul>
+        </div>
+      </div>
+      <div class="policy-footer">
+        <p>Applies to all orders. Thank you for your support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider"></div>
+
+  <!-- FOOTER CTA -->
+  <section id="footer_cta">
+    <div class="container">
+      <h2>You thinking about it… or you ordering? 👀</h2>
+      <div class="footer-cta-buttons">
+        <a href="tel:445-260-6796" class="btn btn-white">
+          <i class="fas fa-phone"></i> Call 445-260-6796
+        </a>
+        <a href="https://cashdrop.com/hooked-seafood" target="_blank" class="btn btn-outline">
+          <i class="fas fa-utensils"></i> Order Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider flip"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <img src="hooked-logo-edited.png" alt="Hooked Seafood" class="footer-logo">
+      <div class="footer-info">
+        <p><strong>Hooked Seafood</strong></p>
+        <p>2408 Germantown Ave, Philadelphia, PA</p>
+        <p><a href="tel:445-260-6796" style="color: var(--primary-red);">445-260-6796</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/hookedseafood" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://cashdrop.com/hooked-seafood" target="_blank">Order Now</a>
+        <a href="tel:445-260-6796">Call Us</a>
+      </div>
+      <p class="footer-copy">© 2025 Hooked Seafood. All rights reserved.</p>
+      <p class="footer-credit" style="margin-top: 15px; font-size: 12px; color: #999;">CURATED BY <a href="https://ownyourweb.xyz" target="_blank" style="color: var(--primary-red); font-weight: 600;">OWNYOURWEBSYSTEMS</a></p>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP - CRAB BUTTON -->
+  <a href="#" class="back-to-top" id="backToTop" title="Back to top">
+    <svg viewBox="0 0 60 60" class="crab-icon">
+      <!-- Crab body -->
+      <circle cx="30" cy="35" r="12" fill="#B10F1A"/>
+      <!-- Left claw -->
+      <ellipse cx="12" cy="25" rx="8" ry="10" fill="#B10F1A" transform="rotate(-30 12 25)"/>
+      <!-- Right claw -->
+      <ellipse cx="48" cy="25" rx="8" ry="10" fill="#B10F1A" transform="rotate(30 48 25)"/>
+      <!-- Left legs -->
+      <ellipse cx="15" cy="40" rx="6" ry="3" fill="#B10F1A" transform="rotate(-20 15 40)"/>
+      <ellipse cx="14" cy="48" rx="6" ry="3" fill="#B10F1A" transform="rotate(-35 14 48)"/>
+      <!-- Right legs -->
+      <ellipse cx="45" cy="40" rx="6" ry="3" fill="#B10F1A" transform="rotate(20 45 40)"/>
+      <ellipse cx="46" cy="48" rx="6" ry="3" fill="#B10F1A" transform="rotate(35 46 48)"/>
+      <!-- Arrow cutout (white) -->
+      <polygon points="30,18 23,32 37,32" fill="#fff"/>
+      <rect x="26" y="32" width="8" height="10" fill="#fff"/>
+    </svg>
+  </a>
+
+  <script>
+    // Back to top button visibility
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
